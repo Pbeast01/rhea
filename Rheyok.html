@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curriculum Vitae</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background: #1e1e1e; /* Dark background for better contrast */
+        color: #e0e0e0; /* Light text for readability */
+        line-height: 1.6;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 50px auto;
+        background: #2c2c2c; /* Lighter background for the content */
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        display: flex;
+        padding: 30px;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .container:hover {
+        transform: scale(1.03);
+      }
+
+      .left-column {
+        width: 35%;
+        padding-right: 20px;
+        background: #ff5722; /* Orange accent color for the left section */
+        color: #fff;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+      }
+
+      .left-column .profile-picture {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        margin-top: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        border: 5px solid #fff;
+      }
+
+      .profile-picture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .left-column .header h2 {
+        font-size: 32px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+        color: #fff;
+      }
+
+      .section h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: #ff5722;
+        font-weight: bold;
+        position: relative;
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .section h2:before {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background-color: #ff784e;
+      }
+
+      .section ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+      }
+
+      .section ul li {
+        margin-bottom: 12px;
+        font-size: 16px;
+        color: #fff;
+      }
+
+      .right-column {
+        width: 65%;
+        padding-left: 30px;
+      }
+
+      .card {
+        background: #3a3a3a; /* Dark gray background for cards */
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 25px;
+        transition: all 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .timeline .event {
+        margin-bottom: 20px;
+      }
+
+      .event h3 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+        color: #e0e0e0;
+      }
+
+      .event p {
+        margin-top: 5px;
+        font-size: 16px;
+        color: #bbb;
+      }
+
+      .contact-info div {
+        margin-bottom: 10px;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        color: #e0e0e0;
+        justify-content: center;
+      }
+
+      .contact-info img {
+        width: 24px;
+        height: 24px;
+        margin-right: 15px;
+      }
+
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        color: #e0e0e0;
+      }
+
+      .skills div {
+        font-size: 16px;
+      }
+
+      .button {
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .button a {
+        padding: 12px 25px;
+        background-color: #ff5722; /* Button color */
+        color: white;
+        font-size: 18px;
+        text-decoration: none;
+        border-radius: 30px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .button a:hover {
+        background-color: #ff784e;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .personal-info,
+      .hobbies,
+      .vision {
+        margin-top: 30px;
+      }
+
+      .personal-info,
+      .hobbies,
+      .vision,
+      .contact-info {
+        background: #2c2c2c; /* Light background for sections */
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+
+      .hobby {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .hobby img {
+        width: 25px;
+        height: 25px;
+        margin-right: 15px;
+      }
+
+      .vision p {
+        color: #e0e0e0;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .personal-info p,
+      .hobbies p,
+      .vision p {
+        font-size: 16px;
+        color: #e0e0e0;
+        margin: 10px 0;
+      }
+
+      .personal-info p span,
+      .hobbies p span,
+      .vision p span {
+        font-weight: bold;
+        color: #ff5722;
+      }
+
+      /* Subtle Animation for Background */
+      @keyframes bgAnimation {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 400px 400px;
+        }
+      }
+
+      body {
+        animation: bgAnimation 15s ease-in-out infinite;
+        background-size: 800px 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-column">
+        <div class="profile-picture">
+          <img src="Logo.jpg" alt="Foto Profil" />
+        </div>
+
+        <div class="header">
+          <h2>Ilham Tifani Bintang</h2>
+          <p>Web Developer | Tech Enthusiast</p>
+        </div>
+
+        <div class="personal-info">
+          <h2>Data Pribadi</h2>
+          <p><span>Nama:</span> Ilham Tifani Bintang Praduta</p>
+          <p><span>NPM:</span> 5240411092</p>
+        </div>
+
+        <div class="hobbies">
+          <h2>Hobi</h2>
+          <div class="hobby">
+            <img src="game.png" alt="Ngegame" />
+            Ngegame
+          </div>
+          <div class="hobby">
+            <img src="coding.png" alt="Coding" />
+            Coding
+          </div>
+          <div class="hobby">
+            <img src="sports.png" alt="Olahraga" />
+            Olahraga
+          </div>
+          <div class="hobby">
+            <img src="travel.png" alt="Travelling" />
+            Travelling
+          </div>
+        </div>
+
+        <div class="vision">
+          <h2>Visi</h2>
+          <p>
+            Menjadi pribadi yang inovatif, kreatif, dan mampu memberikan dampak
+            positif dalam setiap bidang yang digeluti, serta terus belajar untuk
+            pengembangan diri dan kontribusi kepada masyarakat.
+          </p>
+        </div>
+      </div>
+
+      <div class="right-column">
+        <div class="card">
+          <h2>Keahlian</h2>
+          <div class="skills">
+            <div>• Fotografi atau Videografi</div>
+            <div>• Mekanik atau Teknisi</div>
+            <div>• Persuasi</div>
+            <div>• Bereksperimen</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Profil</h2>
+          <p>
+            Profesional multitalenta dengan keahlian dalam fotografi kreatif,
+            teknik mekanik, dan kemampuan persuasi yang kuat. Berpengalaman
+            dalam menghasilkan visual yang menarik untuk berbagai proyek serta
+            memiliki keterampilan teknis dalam merancang, memperbaiki, dan
+            memodifikasi perangkat mekanik. Memiliki pendekatan inovatif yang
+            didukung oleh kemampuan eksperimen untuk menciptakan solusi baru dan
+            efektif. Berorientasi pada hasil dengan kemampuan komunikasi yang
+            mampu membangun hubungan baik dengan klien maupun tim.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Pendidikan</h2>
+          <div class="timeline">
+            <div class="event">
+              <h3>Sarjana Teknik Informatika</h3>
+              <p>Universitas Teknologi Yogyakarta (2024 - Belum Diketahui)</p>
+            </div>
+            <div class="event">
+              <h3>SMK Taruna Bhakti</h3>
+              <p>Priode : (2021 - 2024)</p>
+            </div>
+            <div class="event">
+              <h3>SMP Mutiara Mandiri</h3>
+              <p>Priode : (2019 - 2021)</p>
+            </div>
+            <div class="event">
+              <h3>SDIT Al Ansori</h3>
+              <p>Priode : (2013 - 2019)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Pengalaman Saya</h2>
+          <div class="timeline">
+            <div class="event">
+              <h3>Praktik Kerja Lapangan (PKL)</h3>
+              <p>• Meningkatkan kemampuan Kerja sama tim</p>
+              <p>• Meningkatkan Disiplin Dan Manajemen Waktu</p>
+            </div>
+            <div class="event">
+              <h3>Terpilih menjadi OSIS</h3>
+              <p>• Mengasah kemampuan untuk menghadapi</p>
+              <p>• Menyelesaian konflik</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Kontak</h2>
+          <div class="contact-info">
+            <div>
+              <img src="instagram.png" alt="Instagram" />
+              Instagram: @Ilhamtfn_
+            </div>
+            <div>
+              <img src="social.png" alt="WhatsApp" />
+              WhatsApp: +62859102789205
+            </div>
+          </div>
+        </div>
+
+        <div class="button">
+          <a href="mailto:ilham.tfn98@gmail.com">Kirim Email</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
